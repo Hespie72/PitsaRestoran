@@ -2,8 +2,8 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/08/2026 12:32:59
--- Generated from EDMX file: C:\Users\opilane\source\repos\WebApplication1\WebApplication1\PitsaRestoranModel.edmx
+-- Date Created: 10/13/2026 08:57:37
+-- Generated from EDMX file: C:\Users\opilane\source\repos\PitsaRestoran\WebApplication1\PitsaRestoranModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_TootajaTootaja_Ametikoht]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tootaja_AmetikohtSet] DROP CONSTRAINT [FK_TootajaTootaja_Ametikoht];
+GO
+IF OBJECT_ID(N'[dbo].[FK_AmetiTootaja_Ametikoht]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tootaja_AmetikohtSet] DROP CONSTRAINT [FK_AmetiTootaja_Ametikoht];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[TootajaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TootajaSet];
+GO
+IF OBJECT_ID(N'[dbo].[AmetiSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[AmetiSet];
+GO
+IF OBJECT_ID(N'[dbo].[Tootaja_AmetikohtSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Tootaja_AmetikohtSet];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -30,14 +45,17 @@ GO
 -- Creating table 'TootajaSet'
 CREATE TABLE [dbo].[TootajaSet] (
     [TootajaID] int IDENTITY(1,1) NOT NULL,
-    [nimiPereNimi] nvarchar(max)  NOT NULL
+    [eesnimi] nvarchar(max)  NOT NULL,
+    [perenimi] nvarchar(max)  NOT NULL,
+    [isikukood] nvarchar(max)  NOT NULL
 );
 GO
 
 -- Creating table 'AmetiSet'
 CREATE TABLE [dbo].[AmetiSet] (
     [AmetiID] int IDENTITY(1,1) NOT NULL,
-    [AmetiNimetus] nvarchar(max)  NOT NULL
+    [nimetus] nvarchar(max)  NOT NULL,
+    [kirjeldus] nvarchar(max)  NOT NULL
 );
 GO
 
@@ -47,6 +65,112 @@ CREATE TABLE [dbo].[Tootaja_AmetikohtSet] (
     [AmetiNimetus] nvarchar(max)  NOT NULL,
     [Tootaja_TootajaID] int  NOT NULL,
     [Ameti_AmetiID] int  NOT NULL
+);
+GO
+
+-- Creating table 'kategooriaSet'
+CREATE TABLE [dbo].[kategooriaSet] (
+    [kategooriaID] int IDENTITY(1,1) NOT NULL,
+    [nimetus] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'ToodeSet'
+CREATE TABLE [dbo].[ToodeSet] (
+    [ToodeID] int IDENTITY(1,1) NOT NULL,
+    [nimetus] nvarchar(max)  NOT NULL,
+    [kirjeldus] nvarchar(max)  NOT NULL,
+    [hind] nvarchar(max)  NOT NULL,
+    [kategooria_kategooriaID] int  NOT NULL
+);
+GO
+
+-- Creating table 'PitsaSet'
+CREATE TABLE [dbo].[PitsaSet] (
+    [PitsaID] int IDENTITY(1,1) NOT NULL,
+    [nimetus] nvarchar(max)  NOT NULL,
+    [Toode_ToodeID] int  NOT NULL
+);
+GO
+
+-- Creating table 'KoostisosaSet'
+CREATE TABLE [dbo].[KoostisosaSet] (
+    [KoostisosaID] int IDENTITY(1,1) NOT NULL,
+    [nimetus] nvarchar(max)  NOT NULL,
+    [kehtivusaeg] datetime  NOT NULL
+);
+GO
+
+-- Creating table 'Pitsa_KoostisosaSet'
+CREATE TABLE [dbo].[Pitsa_KoostisosaSet] (
+    [Pitsa_KoostisosaID] int IDENTITY(1,1) NOT NULL,
+    [kogus] nvarchar(max)  NOT NULL,
+    [Koostisosa_KoostisosaID] int  NOT NULL,
+    [Pitsa_PitsaID] int  NOT NULL
+);
+GO
+
+-- Creating table 'KlientSet'
+CREATE TABLE [dbo].[KlientSet] (
+    [KlientID] int IDENTITY(1,1) NOT NULL,
+    [eesnimi] nvarchar(max)  NOT NULL,
+    [perenimi] nvarchar(max)  NOT NULL,
+    [telefon] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'TellimusSet'
+CREATE TABLE [dbo].[TellimusSet] (
+    [TellimusID] int IDENTITY(1,1) NOT NULL,
+    [kuupaev] datetime  NOT NULL,
+    [kellaaeg] time  NOT NULL,
+    [staatus] nvarchar(max)  NOT NULL,
+    [Klient_KlientID] int  NOT NULL,
+    [Laud_LaudID] int  NOT NULL
+);
+GO
+
+-- Creating table 'LaudSet'
+CREATE TABLE [dbo].[LaudSet] (
+    [LaudID] int IDENTITY(1,1) NOT NULL,
+    [number] int  NOT NULL,
+    [kohtade_arv] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Tellimus_ToodeSet'
+CREATE TABLE [dbo].[Tellimus_ToodeSet] (
+    [Tellimus_ToodeID] int IDENTITY(1,1) NOT NULL,
+    [kogus] nvarchar(max)  NOT NULL,
+    [Tellimus_TellimusID] int  NOT NULL,
+    [Toode_ToodeID] int  NOT NULL
+);
+GO
+
+-- Creating table 'kohaletoimetamineSet'
+CREATE TABLE [dbo].[kohaletoimetamineSet] (
+    [kohaletoimetamineID] int IDENTITY(1,1) NOT NULL,
+    [aadress] nvarchar(max)  NOT NULL,
+    [staatus] nvarchar(max)  NOT NULL,
+    [Tellimus_TellimusID] int  NOT NULL
+);
+GO
+
+-- Creating table 'TarnijaSet'
+CREATE TABLE [dbo].[TarnijaSet] (
+    [TarnijaID] int IDENTITY(1,1) NOT NULL,
+    [nimetus] nvarchar(max)  NOT NULL,
+    [telefon] nvarchar(max)  NOT NULL
+);
+GO
+
+-- Creating table 'Tarnija_KoostisosaSet'
+CREATE TABLE [dbo].[Tarnija_KoostisosaSet] (
+    [Tarnija_KoostisosaID] int IDENTITY(1,1) NOT NULL,
+    [tarneriik] nvarchar(max)  NOT NULL,
+    [tarnekuupaev] nvarchar(max)  NOT NULL,
+    [kogus] nvarchar(max)  NOT NULL,
+    [Tarnija_TarnijaID] int  NOT NULL
 );
 GO
 
@@ -70,6 +194,78 @@ GO
 ALTER TABLE [dbo].[Tootaja_AmetikohtSet]
 ADD CONSTRAINT [PK_Tootaja_AmetikohtSet]
     PRIMARY KEY CLUSTERED ([Tootaja_AmetikohtID] ASC);
+GO
+
+-- Creating primary key on [kategooriaID] in table 'kategooriaSet'
+ALTER TABLE [dbo].[kategooriaSet]
+ADD CONSTRAINT [PK_kategooriaSet]
+    PRIMARY KEY CLUSTERED ([kategooriaID] ASC);
+GO
+
+-- Creating primary key on [ToodeID] in table 'ToodeSet'
+ALTER TABLE [dbo].[ToodeSet]
+ADD CONSTRAINT [PK_ToodeSet]
+    PRIMARY KEY CLUSTERED ([ToodeID] ASC);
+GO
+
+-- Creating primary key on [PitsaID] in table 'PitsaSet'
+ALTER TABLE [dbo].[PitsaSet]
+ADD CONSTRAINT [PK_PitsaSet]
+    PRIMARY KEY CLUSTERED ([PitsaID] ASC);
+GO
+
+-- Creating primary key on [KoostisosaID] in table 'KoostisosaSet'
+ALTER TABLE [dbo].[KoostisosaSet]
+ADD CONSTRAINT [PK_KoostisosaSet]
+    PRIMARY KEY CLUSTERED ([KoostisosaID] ASC);
+GO
+
+-- Creating primary key on [Pitsa_KoostisosaID] in table 'Pitsa_KoostisosaSet'
+ALTER TABLE [dbo].[Pitsa_KoostisosaSet]
+ADD CONSTRAINT [PK_Pitsa_KoostisosaSet]
+    PRIMARY KEY CLUSTERED ([Pitsa_KoostisosaID] ASC);
+GO
+
+-- Creating primary key on [KlientID] in table 'KlientSet'
+ALTER TABLE [dbo].[KlientSet]
+ADD CONSTRAINT [PK_KlientSet]
+    PRIMARY KEY CLUSTERED ([KlientID] ASC);
+GO
+
+-- Creating primary key on [TellimusID] in table 'TellimusSet'
+ALTER TABLE [dbo].[TellimusSet]
+ADD CONSTRAINT [PK_TellimusSet]
+    PRIMARY KEY CLUSTERED ([TellimusID] ASC);
+GO
+
+-- Creating primary key on [LaudID] in table 'LaudSet'
+ALTER TABLE [dbo].[LaudSet]
+ADD CONSTRAINT [PK_LaudSet]
+    PRIMARY KEY CLUSTERED ([LaudID] ASC);
+GO
+
+-- Creating primary key on [Tellimus_ToodeID] in table 'Tellimus_ToodeSet'
+ALTER TABLE [dbo].[Tellimus_ToodeSet]
+ADD CONSTRAINT [PK_Tellimus_ToodeSet]
+    PRIMARY KEY CLUSTERED ([Tellimus_ToodeID] ASC);
+GO
+
+-- Creating primary key on [kohaletoimetamineID] in table 'kohaletoimetamineSet'
+ALTER TABLE [dbo].[kohaletoimetamineSet]
+ADD CONSTRAINT [PK_kohaletoimetamineSet]
+    PRIMARY KEY CLUSTERED ([kohaletoimetamineID] ASC);
+GO
+
+-- Creating primary key on [TarnijaID] in table 'TarnijaSet'
+ALTER TABLE [dbo].[TarnijaSet]
+ADD CONSTRAINT [PK_TarnijaSet]
+    PRIMARY KEY CLUSTERED ([TarnijaID] ASC);
+GO
+
+-- Creating primary key on [Tarnija_KoostisosaID] in table 'Tarnija_KoostisosaSet'
+ALTER TABLE [dbo].[Tarnija_KoostisosaSet]
+ADD CONSTRAINT [PK_Tarnija_KoostisosaSet]
+    PRIMARY KEY CLUSTERED ([Tarnija_KoostisosaID] ASC);
 GO
 
 -- --------------------------------------------------
@@ -104,6 +300,156 @@ GO
 CREATE INDEX [IX_FK_AmetiTootaja_Ametikoht]
 ON [dbo].[Tootaja_AmetikohtSet]
     ([Ameti_AmetiID]);
+GO
+
+-- Creating foreign key on [kategooria_kategooriaID] in table 'ToodeSet'
+ALTER TABLE [dbo].[ToodeSet]
+ADD CONSTRAINT [FK_kategooriaToode]
+    FOREIGN KEY ([kategooria_kategooriaID])
+    REFERENCES [dbo].[kategooriaSet]
+        ([kategooriaID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_kategooriaToode'
+CREATE INDEX [IX_FK_kategooriaToode]
+ON [dbo].[ToodeSet]
+    ([kategooria_kategooriaID]);
+GO
+
+-- Creating foreign key on [Toode_ToodeID] in table 'PitsaSet'
+ALTER TABLE [dbo].[PitsaSet]
+ADD CONSTRAINT [FK_ToodePitsa]
+    FOREIGN KEY ([Toode_ToodeID])
+    REFERENCES [dbo].[ToodeSet]
+        ([ToodeID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ToodePitsa'
+CREATE INDEX [IX_FK_ToodePitsa]
+ON [dbo].[PitsaSet]
+    ([Toode_ToodeID]);
+GO
+
+-- Creating foreign key on [Koostisosa_KoostisosaID] in table 'Pitsa_KoostisosaSet'
+ALTER TABLE [dbo].[Pitsa_KoostisosaSet]
+ADD CONSTRAINT [FK_KoostisosaPitsa_Koostisosa]
+    FOREIGN KEY ([Koostisosa_KoostisosaID])
+    REFERENCES [dbo].[KoostisosaSet]
+        ([KoostisosaID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KoostisosaPitsa_Koostisosa'
+CREATE INDEX [IX_FK_KoostisosaPitsa_Koostisosa]
+ON [dbo].[Pitsa_KoostisosaSet]
+    ([Koostisosa_KoostisosaID]);
+GO
+
+-- Creating foreign key on [Pitsa_PitsaID] in table 'Pitsa_KoostisosaSet'
+ALTER TABLE [dbo].[Pitsa_KoostisosaSet]
+ADD CONSTRAINT [FK_PitsaPitsa_Koostisosa]
+    FOREIGN KEY ([Pitsa_PitsaID])
+    REFERENCES [dbo].[PitsaSet]
+        ([PitsaID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_PitsaPitsa_Koostisosa'
+CREATE INDEX [IX_FK_PitsaPitsa_Koostisosa]
+ON [dbo].[Pitsa_KoostisosaSet]
+    ([Pitsa_PitsaID]);
+GO
+
+-- Creating foreign key on [Klient_KlientID] in table 'TellimusSet'
+ALTER TABLE [dbo].[TellimusSet]
+ADD CONSTRAINT [FK_KlientTellimus]
+    FOREIGN KEY ([Klient_KlientID])
+    REFERENCES [dbo].[KlientSet]
+        ([KlientID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KlientTellimus'
+CREATE INDEX [IX_FK_KlientTellimus]
+ON [dbo].[TellimusSet]
+    ([Klient_KlientID]);
+GO
+
+-- Creating foreign key on [Laud_LaudID] in table 'TellimusSet'
+ALTER TABLE [dbo].[TellimusSet]
+ADD CONSTRAINT [FK_LaudTellimus]
+    FOREIGN KEY ([Laud_LaudID])
+    REFERENCES [dbo].[LaudSet]
+        ([LaudID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_LaudTellimus'
+CREATE INDEX [IX_FK_LaudTellimus]
+ON [dbo].[TellimusSet]
+    ([Laud_LaudID]);
+GO
+
+-- Creating foreign key on [Tellimus_TellimusID] in table 'Tellimus_ToodeSet'
+ALTER TABLE [dbo].[Tellimus_ToodeSet]
+ADD CONSTRAINT [FK_TellimusTellimus_Toode]
+    FOREIGN KEY ([Tellimus_TellimusID])
+    REFERENCES [dbo].[TellimusSet]
+        ([TellimusID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TellimusTellimus_Toode'
+CREATE INDEX [IX_FK_TellimusTellimus_Toode]
+ON [dbo].[Tellimus_ToodeSet]
+    ([Tellimus_TellimusID]);
+GO
+
+-- Creating foreign key on [Toode_ToodeID] in table 'Tellimus_ToodeSet'
+ALTER TABLE [dbo].[Tellimus_ToodeSet]
+ADD CONSTRAINT [FK_ToodeTellimus_Toode]
+    FOREIGN KEY ([Toode_ToodeID])
+    REFERENCES [dbo].[ToodeSet]
+        ([ToodeID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_ToodeTellimus_Toode'
+CREATE INDEX [IX_FK_ToodeTellimus_Toode]
+ON [dbo].[Tellimus_ToodeSet]
+    ([Toode_ToodeID]);
+GO
+
+-- Creating foreign key on [Tellimus_TellimusID] in table 'kohaletoimetamineSet'
+ALTER TABLE [dbo].[kohaletoimetamineSet]
+ADD CONSTRAINT [FK_Tellimuskohaletoimetamine]
+    FOREIGN KEY ([Tellimus_TellimusID])
+    REFERENCES [dbo].[TellimusSet]
+        ([TellimusID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_Tellimuskohaletoimetamine'
+CREATE INDEX [IX_FK_Tellimuskohaletoimetamine]
+ON [dbo].[kohaletoimetamineSet]
+    ([Tellimus_TellimusID]);
+GO
+
+-- Creating foreign key on [Tarnija_TarnijaID] in table 'Tarnija_KoostisosaSet'
+ALTER TABLE [dbo].[Tarnija_KoostisosaSet]
+ADD CONSTRAINT [FK_TarnijaTarnija_Koostisosa]
+    FOREIGN KEY ([Tarnija_TarnijaID])
+    REFERENCES [dbo].[TarnijaSet]
+        ([TarnijaID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TarnijaTarnija_Koostisosa'
+CREATE INDEX [IX_FK_TarnijaTarnija_Koostisosa]
+ON [dbo].[Tarnija_KoostisosaSet]
+    ([Tarnija_TarnijaID]);
 GO
 
 -- --------------------------------------------------
