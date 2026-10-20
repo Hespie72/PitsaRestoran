@@ -20,5 +20,6 @@ namespace WebApplication1
         public string kogus { get; set; }
     
         public virtual Tarnija Tarnija { get; set; }
+        public virtual Koostisosa Koostisosa { get; set; }
     }
 }

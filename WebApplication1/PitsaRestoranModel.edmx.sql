@@ -2,13 +2,13 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/13/2026 08:57:37
+-- Date Created: 10/20/2026 09:11:22
 -- Generated from EDMX file: C:\Users\opilane\source\repos\PitsaRestoran\WebApplication1\PitsaRestoranModel.edmx
 -- --------------------------------------------------
 
 SET QUOTED_IDENTIFIER OFF;
 GO
-USE [modelDB];
+USE [Pitsarestoran];
 GO
 IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
@@ -17,25 +17,91 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[FK_TootajaTootaja_Ametikoht]', 'F') IS NOT NULL
-    ALTER TABLE [dbo].[Tootaja_AmetikohtSet] DROP CONSTRAINT [FK_TootajaTootaja_Ametikoht];
-GO
 IF OBJECT_ID(N'[dbo].[FK_AmetiTootaja_Ametikoht]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Tootaja_AmetikohtSet] DROP CONSTRAINT [FK_AmetiTootaja_Ametikoht];
+GO
+IF OBJECT_ID(N'[dbo].[FK_kategooriaToode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[ToodeSet] DROP CONSTRAINT [FK_kategooriaToode];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KlientTellimus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TellimusSet] DROP CONSTRAINT [FK_KlientTellimus];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KoostisosaPitsa_Koostisosa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pitsa_KoostisosaSet] DROP CONSTRAINT [FK_KoostisosaPitsa_Koostisosa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_LaudTellimus]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TellimusSet] DROP CONSTRAINT [FK_LaudTellimus];
+GO
+IF OBJECT_ID(N'[dbo].[FK_PitsaPitsa_Koostisosa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Pitsa_KoostisosaSet] DROP CONSTRAINT [FK_PitsaPitsa_Koostisosa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TarnijaTarnija_Koostisosa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tarnija_KoostisosaSet] DROP CONSTRAINT [FK_TarnijaTarnija_Koostisosa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_Tellimuskohaletoimetamine]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[kohaletoimetamineSet] DROP CONSTRAINT [FK_Tellimuskohaletoimetamine];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TellimusTellimus_Toode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tellimus_ToodeSet] DROP CONSTRAINT [FK_TellimusTellimus_Toode];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ToodePitsa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[PitsaSet] DROP CONSTRAINT [FK_ToodePitsa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_ToodeTellimus_Toode]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tellimus_ToodeSet] DROP CONSTRAINT [FK_ToodeTellimus_Toode];
+GO
+IF OBJECT_ID(N'[dbo].[FK_TootajaTootaja_Ametikoht]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tootaja_AmetikohtSet] DROP CONSTRAINT [FK_TootajaTootaja_Ametikoht];
 GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
-IF OBJECT_ID(N'[dbo].[TootajaSet]', 'U') IS NOT NULL
-    DROP TABLE [dbo].[TootajaSet];
-GO
 IF OBJECT_ID(N'[dbo].[AmetiSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[AmetiSet];
 GO
+IF OBJECT_ID(N'[dbo].[kategooriaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[kategooriaSet];
+GO
+IF OBJECT_ID(N'[dbo].[KlientSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KlientSet];
+GO
+IF OBJECT_ID(N'[dbo].[kohaletoimetamineSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[kohaletoimetamineSet];
+GO
+IF OBJECT_ID(N'[dbo].[KoostisosaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[KoostisosaSet];
+GO
+IF OBJECT_ID(N'[dbo].[LaudSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[LaudSet];
+GO
+IF OBJECT_ID(N'[dbo].[Pitsa_KoostisosaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Pitsa_KoostisosaSet];
+GO
+IF OBJECT_ID(N'[dbo].[PitsaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[PitsaSet];
+GO
+IF OBJECT_ID(N'[dbo].[Tarnija_KoostisosaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Tarnija_KoostisosaSet];
+GO
+IF OBJECT_ID(N'[dbo].[TarnijaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TarnijaSet];
+GO
+IF OBJECT_ID(N'[dbo].[Tellimus_ToodeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Tellimus_ToodeSet];
+GO
+IF OBJECT_ID(N'[dbo].[TellimusSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TellimusSet];
+GO
+IF OBJECT_ID(N'[dbo].[ToodeSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[ToodeSet];
+GO
 IF OBJECT_ID(N'[dbo].[Tootaja_AmetikohtSet]', 'U') IS NOT NULL
     DROP TABLE [dbo].[Tootaja_AmetikohtSet];
+GO
+IF OBJECT_ID(N'[dbo].[TootajaSet]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TootajaSet];
 GO
 
 -- --------------------------------------------------
@@ -170,7 +236,8 @@ CREATE TABLE [dbo].[Tarnija_KoostisosaSet] (
     [tarneriik] nvarchar(max)  NOT NULL,
     [tarnekuupaev] nvarchar(max)  NOT NULL,
     [kogus] nvarchar(max)  NOT NULL,
-    [Tarnija_TarnijaID] int  NOT NULL
+    [Tarnija_TarnijaID] int  NOT NULL,
+    [Koostisosa_KoostisosaID] int  NOT NULL
 );
 GO
 
@@ -450,6 +517,21 @@ GO
 CREATE INDEX [IX_FK_TarnijaTarnija_Koostisosa]
 ON [dbo].[Tarnija_KoostisosaSet]
     ([Tarnija_TarnijaID]);
+GO
+
+-- Creating foreign key on [Koostisosa_KoostisosaID] in table 'Tarnija_KoostisosaSet'
+ALTER TABLE [dbo].[Tarnija_KoostisosaSet]
+ADD CONSTRAINT [FK_KoostisosaTarnija_Koostisosa]
+    FOREIGN KEY ([Koostisosa_KoostisosaID])
+    REFERENCES [dbo].[KoostisosaSet]
+        ([KoostisosaID])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_KoostisosaTarnija_Koostisosa'
+CREATE INDEX [IX_FK_KoostisosaTarnija_Koostisosa]
+ON [dbo].[Tarnija_KoostisosaSet]
+    ([Koostisosa_KoostisosaID]);
 GO
 
 -- --------------------------------------------------

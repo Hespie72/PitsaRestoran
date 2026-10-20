@@ -4,7 +4,11 @@
     <main aria-labelledby="title">
         <h2 id="title">Tootaja Ametikoht Lisa.</h2>
     <p>
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="Tootaja_AmetikohtID" DataSourceID="AmetiTootaja1" Height="50px" Width="125px">
+        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="Tootaja_AmetikohtID" DataSourceID="AmetiTootaja1" Height="50px" Width="125px" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
+            <EditRowStyle BackColor="#2461BF" />
+            <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
             <Fields>
                 <asp:BoundField DataField="Tootaja_AmetikohtID" HeaderText="Tootaja_AmetikohtID" InsertVisible="False" ReadOnly="True" SortExpression="Tootaja_AmetikohtID" />
                 <asp:TemplateField HeaderText="Tootaja_TootajaID" SortExpression="Tootaja_TootajaID">
@@ -62,8 +66,12 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("Ameti_AmetiID") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowInsertButton="True" />
+                <asp:CommandField ShowInsertButton="True" NewText="Lisa" />
             </Fields>
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
         </asp:DetailsView>
         <asp:SqlDataSource ID="AmetiTootaja1" runat="server" ConnectionString="<%$ ConnectionStrings:PitsarestoranConnectionString2 %>" DeleteCommand="DELETE FROM [Tootaja_AmetikohtSet] WHERE [Tootaja_AmetikohtID] = @Tootaja_AmetikohtID" InsertCommand="INSERT INTO [Tootaja_AmetikohtSet] ([AmetiNimetus], [Tootaja_TootajaID], [Ameti_AmetiID]) VALUES (@AmetiNimetus, @Tootaja_TootajaID, @Ameti_AmetiID)" SelectCommand="SELECT * FROM [Tootaja_AmetikohtSet]" UpdateCommand="UPDATE [Tootaja_AmetikohtSet] SET [AmetiNimetus] = @AmetiNimetus, [Tootaja_TootajaID] = @Tootaja_TootajaID, [Ameti_AmetiID] = @Ameti_AmetiID WHERE [Tootaja_AmetikohtID] = @Tootaja_AmetikohtID">
             <DeleteParameters>

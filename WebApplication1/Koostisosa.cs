@@ -17,6 +17,7 @@ namespace WebApplication1
         public Koostisosa()
         {
             this.Pitsa_Koostisosa = new HashSet<Pitsa_Koostisosa>();
+            this.Tarnija_Koostisosa = new HashSet<Tarnija_Koostisosa>();
         }
     
         public int KoostisosaID { get; set; }
@@ -24,5 +25,6 @@ namespace WebApplication1
         public System.DateTime kehtivusaeg { get; set; }
     
         public virtual ICollection<Pitsa_Koostisosa> Pitsa_Koostisosa { get; set; }
+        public virtual ICollection<Tarnija_Koostisosa> Tarnija_Koostisosa { get; set; }
     }
 }

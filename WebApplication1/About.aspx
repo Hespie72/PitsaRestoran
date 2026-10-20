@@ -6,7 +6,7 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="TootajaID" DataSourceID="SqlDataSource2" EmptyDataText="There are no data records to display." ForeColor="#333333" GridLines="None" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteText="Kustuta" EditText="Muuda" />
             <asp:BoundField DataField="TootajaID" HeaderText="TootajaID" ReadOnly="True" SortExpression="TootajaID" />
             <asp:BoundField DataField="eesnimi" HeaderText="eesnimi" SortExpression="eesnimi" />
             <asp:BoundField DataField="perenimi" HeaderText="perenimi" SortExpression="perenimi" />
@@ -42,14 +42,22 @@
     <h2>&nbsp;</h2>
     <h2>Lisa tootaja</h2>
     <p>
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="TootajaID" DataSourceID="SqlDataSource2" Height="50px" Width="125px">
+        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="TootajaID" DataSourceID="SqlDataSource2" Height="50px" Width="125px" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" />
+            <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
+            <EditRowStyle BackColor="#2461BF" />
+            <FieldHeaderStyle BackColor="#DEE8F5" Font-Bold="True" />
             <Fields>
                 <asp:BoundField DataField="TootajaID" HeaderText="TootajaID" InsertVisible="False" ReadOnly="True" SortExpression="TootajaID" />
                 <asp:BoundField DataField="eesnimi" HeaderText="eesnimi" SortExpression="eesnimi" />
                 <asp:BoundField DataField="perenimi" HeaderText="perenimi" SortExpression="perenimi" />
                 <asp:BoundField DataField="isikukood" HeaderText="isikukood" SortExpression="isikukood" />
-                <asp:CommandField ShowInsertButton="True" />
+                <asp:CommandField ShowInsertButton="True" NewText="Lisa" />
             </Fields>
+            <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
+            <RowStyle BackColor="#EFF3FB" />
         </asp:DetailsView>
     </p>
     <p>&nbsp;</p>

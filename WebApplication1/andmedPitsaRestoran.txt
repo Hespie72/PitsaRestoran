@@ -1,147 +1,87 @@
-    -- 1. Категории
-    INSERT INTO dbo.kategooriaSet (nimetus)
-    VALUES
-        (N'Pitsad'),
-        (N'Joogid'),
-        (N'Desserdid');
+INSERT INTO [dbo].[TootajaSet] ([eesnimi], [perenimi], [isikukood]) VALUES
+(N'Mart', N'Tamm', N'39001010011'),
+(N'Laura', N'Saar', N'49502020022'),
+(N'Kevin', N'Kask', N'38803030033');
 
-    -- 2. Тooted (tooted)
-    INSERT INTO dbo.ToodeSet
-        (nimetus, kirjeldus, hind, kategooria_kategooriaID)
-    VALUES
-        (N'Margherita', N'Tomatikaste, mozzarella, basiilik', N'8.90',
-         (SELECT kategooriaID FROM dbo.kategooriaSet WHERE nimetus = N'Pitsad')),
-        (N'Coca-Cola', N'Karastusjook 0.5 l', N'2.50',
-         (SELECT kategooriaID FROM dbo.kategooriaSet WHERE nimetus = N'Joogid')),
-        (N'Tiramisu', N'Itaalia kohvimaitseline magustoit', N'4.90',
-         (SELECT kategooriaID FROM dbo.kategooriaSet WHERE nimetus = N'Desserdid'));
+INSERT INTO [dbo].[AmetiSet] ([nimetus], [kirjeldus]) VALUES
+(N'Kokk', N'Valmistab pitsasid ja muid toite'),
+(N'Kelner', N'Teenindab kliente'),
+(N'Administraator', N'Korraldab restorani tööd');
 
-    -- 3. Pitsad
-    INSERT INTO dbo.PitsaSet (nimetus, Toode_ToodeID)
-    VALUES
-        (N'Margherita',
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Margherita')),
-        (N'Pepperoni',
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Margherita')),
-        (N'Vegetariana',
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Margherita'));
+INSERT INTO [dbo].[kategooriaSet] ([nimetus]) VALUES
+(N'Pitsad'),
+(N'Joogid'),
+(N'Desserdid');
 
-    -- 4. Koostisosad
-    INSERT INTO dbo.KoostisosaSet (nimetus, kehtivusaeg)
-    VALUES
-        (N'Mozzarella', '2027-01-15'),
-        (N'Tomat', '2026-11-15'),
-        (N'Pepperoni', '2026-12-15');
+INSERT INTO [dbo].[KlientSet] ([eesnimi], [perenimi], [telefon]) VALUES
+(N'Jaan', N'Karu', N'+3725550101'),
+(N'Mari', N'Kivi', N'+3725550102'),
+(N'Andres', N'Pärn', N'+3725550103');
 
-    -- 5. Pitsa koostisosad
-    INSERT INTO dbo.Pitsa_KoostisosaSet
-        (kogus, Koostisosa_KoostisosaID, Pitsa_PitsaID)
-    VALUES
-        (N'100 g',
-         (SELECT KoostisosaID FROM dbo.KoostisosaSet WHERE nimetus = N'Mozzarella'),
-         (SELECT PitsaID FROM dbo.PitsaSet WHERE nimetus = N'Margherita')),
-        (N'80 g',
-         (SELECT KoostisosaID FROM dbo.KoostisosaSet WHERE nimetus = N'Tomat'),
-         (SELECT PitsaID FROM dbo.PitsaSet WHERE nimetus = N'Margherita')),
-        (N'70 g',
-         (SELECT KoostisosaID FROM dbo.KoostisosaSet WHERE nimetus = N'Pepperoni'),
-         (SELECT PitsaID FROM dbo.PitsaSet WHERE nimetus = N'Pepperoni'));
+INSERT INTO [dbo].[LaudSet] ([number], [kohtade_arv]) VALUES
+(1, N'2'),
+(2, N'4'),
+(3, N'6');
 
-    -- 6. Kliendid
-    INSERT INTO dbo.KlientSet (eesnimi, perenimi, telefon)
-    VALUES
-        (N'Mari', N'Tamm', N'+37255501001'),
-        (N'Jaan', N'Kask', N'+37255501002'),
-        (N'Anna', N'Saar', N'+37255501003');
+INSERT INTO [dbo].[KoostisosaSet] ([nimetus], [kehtivusaeg]) VALUES
+(N'Mozzarella', '2027-12-31'),
+(N'Tomat', '2027-11-30'),
+(N'Sink', '2027-10-31'),
+(N'Jahu', '2027-12-31'),
+(N'Ananass', '2027-09-30');
 
-    -- 7. Lauad
-    INSERT INTO dbo.LaudSet ([number], kohtade_arv)
-    VALUES
-        (1, N'2'),
-        (2, N'4'),
-        (3, N'6');
+INSERT INTO [dbo].[TarnijaSet] ([nimetus], [telefon]) VALUES
+(N'Food Eesti', N'+3726001001'),
+(N'Vegetable OÜ', N'+3726001002'),
+(N'Pizza Supply', N'+3726001003');
 
-    -- 8. Tellimused
-    INSERT INTO dbo.TellimusSet
-        (kuupaev, kellaaeg, staatus, Klient_KlientID, Laud_LaudID)
-    VALUES
-        ('2026-10-15', '12:00:00', N'Tellitud',
-         (SELECT KlientID FROM dbo.KlientSet WHERE telefon = N'+37255501001'),
-         (SELECT LaudID FROM dbo.LaudSet WHERE number = 1)),
-        ('2026-10-15', '13:00:00', N'Valmistamisel',
-         (SELECT KlientID FROM dbo.KlientSet WHERE telefon = N'+37255501002'),
-         (SELECT LaudID FROM dbo.LaudSet WHERE number = 2)),
-        ('2026-10-15', '14:00:00', N'Täidetud',
-         (SELECT KlientID FROM dbo.KlientSet WHERE telefon = N'+37255501003'),
-         (SELECT LaudID FROM dbo.LaudSet WHERE number = 3));
+-- Seostabel töötajate ja ametikohtade vahel
+INSERT INTO [dbo].[Tootaja_AmetikohtSet]
+([AmetiNimetus], [Tootaja_TootajaID], [Ameti_AmetiID]) VALUES
+(N'Kokk', 1, 1),
+(N'Kelner', 2, 2),
+(N'Administraator', 3, 3);
 
-    -- 9. Tellimuste tooted
-    INSERT INTO dbo.Tellimus_ToodeSet
-        (kogus, Tellimus_TellimusID, Toode_ToodeID)
-    VALUES
-        (N'2',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '12:00:00'),
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Margherita')),
-        (N'1',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '13:00:00'),
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Coca-Cola')),
-        (N'2',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '14:00:00'),
-         (SELECT ToodeID FROM dbo.ToodeSet WHERE nimetus = N'Tiramisu'));
+INSERT INTO [dbo].[ToodeSet]
+([nimetus], [kirjeldus], [hind], [kategooria_kategooriaID]) VALUES
+(N'Margherita', N'Tomat, mozzarella ja basiilik', N'8.50', 1),
+(N'Pepperoni', N'Mozzarella ja pepperoni vorst', N'10.50', 1),
+(N'Cola', N'Külm karastusjook', N'2.50', 2),
+(N'Tiramisu', N'Kohvimaitseline magustoit', N'4.50', 3);
 
-    -- 10. Kohaletoimetamine
-    INSERT INTO dbo.kohaletoimetamineSet
-        (aadress, staatus, Tellimus_TellimusID)
-    VALUES
-        (N'Tallinn, Pärnu mnt 10', N'Töötlemisel',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '12:00:00')),
-        (N'Tallinn, Tartu mnt 20', N'Teel kliendini',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '13:00:00')),
-        (N'Tallinn, Narva mnt 30', N'Kohale toimetatud',
-         (SELECT TellimusID FROM dbo.TellimusSet WHERE kellaaeg = '14:00:00'));
+INSERT INTO [dbo].[PitsaSet] ([nimetus], [Toode_ToodeID]) VALUES
+(N'Margherita', 1),
+(N'Pepperoni', 2);
 
-    -- 11. Tarnijad
-    INSERT INTO dbo.TarnijaSet (nimetus, telefon)
-    VALUES
-        (N'Vest Foods OÜ', N'+3726001001'),
-        (N'Baltic Dairy OÜ', N'+3726001002'),
-        (N'Fresh Vegetables OÜ', N'+3726001003');
+INSERT INTO [dbo].[Pitsa_KoostisosaSet]
+([kogus], [Koostisosa_KoostisosaID], [Pitsa_PitsaID]) VALUES
+(N'100 g', 1, 1),
+(N'80 g', 2, 1),
+(N'120 g', 1, 2),
+(N'50 g', 3, 2);
 
-    -- 12. Tarnija koostisosade tarned
-    INSERT INTO dbo.Tarnija_KoostisosaSet
-        (tarneriik, tarnekuupaev, kogus, Tarnija_TarnijaID)
-    VALUES
-        (N'Eesti', N'2026-10-14', N'50 kg',
-         (SELECT TarnijaID FROM dbo.TarnijaSet WHERE nimetus = N'Vest Foods OÜ')),
-        (N'Läti', N'2026-10-14', N'30 kg',
-         (SELECT TarnijaID FROM dbo.TarnijaSet WHERE nimetus = N'Baltic Dairy OÜ')),
-        (N'Eesti', N'2026-10-15', N'20 kg',
-         (SELECT TarnijaID FROM dbo.TarnijaSet WHERE nimetus = N'Fresh Vegetables OÜ'));
+INSERT INTO [dbo].[TellimusSet]
+([kuupaev], [kellaaeg], [staatus], [Klient_KlientID], [Laud_LaudID]) VALUES
+('2026-10-18', '12:30:00', N'Täidetud', 1, 1),
+('2026-10-19', '14:00:00', N'Valmistamisel', 2, 2),
+('2026-10-20', '18:15:00', N'Uus', 3, 3);
 
-    -- 13. Ametikohad
-    INSERT INTO dbo.AmetiSet (nimetus, kirjeldus)
-    VALUES
-        (N'Kokk', N'Valmistab pitsasid ja muid toite'),
-        (N'Kelner', N'Teenindab kliente ja võtab tellimusi'),
-        (N'Administraator', N'Korraldab restorani igapäevatööd');
+INSERT INTO [dbo].[Tellimus_ToodeSet]
+([kogus], [Tellimus_TellimusID], [Toode_ToodeID]) VALUES
+(N'1', 1, 1),
+(N'2', 1, 3),
+(N'1', 2, 2),
+(N'1', 2, 4),
+(N'2', 3, 1);
 
-    -- 14. Töötajad
-    INSERT INTO dbo.TootajaSet (eesnimi, perenimi, isikukood)
-    VALUES
-        (N'Peeter', N'Pärn', N'39010120011'),
-        (N'Liis', N'Kivi', N'49505120022'),
-        (N'Mart', N'Lepp', N'38807010033');
+INSERT INTO [dbo].[kohaletoimetamineSet]
+([aadress], [staatus], [Tellimus_TellimusID]) VALUES
+(N'Tallinn, Pärnu mnt 10', N'Tarnitud', 1),
+(N'Tallinn, Tartu mnt 20', N'Teel', 2),
+(N'Tallinn, Narva mnt 5', N'Uus', 3);
 
-    -- 15. Töötajate ametikohad
-    INSERT INTO dbo.Tootaja_AmetikohtSet
-        (AmetiNimetus, Tootaja_TootajaID, Ameti_AmetiID)
-    VALUES
-        (N'Kokk',
-         (SELECT TootajaID FROM dbo.TootajaSet WHERE isikukood = N'39010120011'),
-         (SELECT AmetiID FROM dbo.AmetiSet WHERE nimetus = N'Kokk')),
-        (N'Kelner',
-         (SELECT TootajaID FROM dbo.TootajaSet WHERE isikukood = N'49505120022'),
-         (SELECT AmetiID FROM dbo.AmetiSet WHERE nimetus = N'Kelner')),
-        (N'Administraator',
-         (SELECT TootajaID FROM dbo.TootajaSet WHERE isikukood = N'38807010033'),
-         (SELECT AmetiID FROM dbo.AmetiSet WHERE nimetus = N'Administraator'));
+INSERT INTO [dbo].[Tarnija_KoostisosaSet]
+([tarneriik], [tarnekuupaev], [kogus], [Tarnija_TarnijaID], [Koostisosa_KoostisosaID]) VALUES
+(N'Eesti', N'2026-10-15', N'100 kg', 1, 1),
+(N'Eesti', N'2026-10-16', N'50 kg', 2, 2),
+(N'Itaalia', N'2026-10-17', N'30 kg', 3, 4);

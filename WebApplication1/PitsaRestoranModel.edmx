@@ -4,349 +4,366 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="PitsaRestoranModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="PitsaRestoranModelStoreContainer">
-    <EntitySet Name="TootajaSet" EntityType="PitsaRestoranModel.Store.TootajaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="AmetiSet" EntityType="PitsaRestoranModel.Store.AmetiSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Tootaja_AmetikohtSet" EntityType="PitsaRestoranModel.Store.Tootaja_AmetikohtSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="kategooriaSet" EntityType="PitsaRestoranModel.Store.kategooriaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="ToodeSet" EntityType="PitsaRestoranModel.Store.ToodeSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="PitsaSet" EntityType="PitsaRestoranModel.Store.PitsaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="KoostisosaSet" EntityType="PitsaRestoranModel.Store.KoostisosaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Pitsa_KoostisosaSet" EntityType="PitsaRestoranModel.Store.Pitsa_KoostisosaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="KlientSet" EntityType="PitsaRestoranModel.Store.KlientSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TellimusSet" EntityType="PitsaRestoranModel.Store.TellimusSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="LaudSet" EntityType="PitsaRestoranModel.Store.LaudSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Tellimus_ToodeSet" EntityType="PitsaRestoranModel.Store.Tellimus_ToodeSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="kohaletoimetamineSet" EntityType="PitsaRestoranModel.Store.kohaletoimetamineSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="TarnijaSet" EntityType="PitsaRestoranModel.Store.TarnijaSet" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="Tarnija_KoostisosaSet" EntityType="PitsaRestoranModel.Store.Tarnija_KoostisosaSet" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="TootajaTootaja_Ametikoht" Association="PitsaRestoranModel.Store.TootajaTootaja_Ametikoht">
-      <End Role="Tootaja" EntitySet="TootajaSet" />
-      <End Role="Tootaja_Ametikoht" EntitySet="Tootaja_AmetikohtSet" />
-    </AssociationSet>
-    <AssociationSet Name="AmetiTootaja_Ametikoht" Association="PitsaRestoranModel.Store.AmetiTootaja_Ametikoht">
-      <End Role="Ameti" EntitySet="AmetiSet" />
-      <End Role="Tootaja_Ametikoht" EntitySet="Tootaja_AmetikohtSet" />
-    </AssociationSet>
-    <AssociationSet Name="kategooriaToode" Association="PitsaRestoranModel.Store.kategooriaToode">
-      <End Role="kategooria" EntitySet="kategooriaSet" />
-      <End Role="Toode" EntitySet="ToodeSet" />
-    </AssociationSet>
-    <AssociationSet Name="ToodePitsa" Association="PitsaRestoranModel.Store.ToodePitsa">
-      <End Role="Toode" EntitySet="ToodeSet" />
-      <End Role="Pitsa" EntitySet="PitsaSet" />
-    </AssociationSet>
-    <AssociationSet Name="KoostisosaPitsa_Koostisosa" Association="PitsaRestoranModel.Store.KoostisosaPitsa_Koostisosa">
-      <End Role="Koostisosa" EntitySet="KoostisosaSet" />
-      <End Role="Pitsa_Koostisosa" EntitySet="Pitsa_KoostisosaSet" />
-    </AssociationSet>
-    <AssociationSet Name="PitsaPitsa_Koostisosa" Association="PitsaRestoranModel.Store.PitsaPitsa_Koostisosa">
-      <End Role="Pitsa" EntitySet="PitsaSet" />
-      <End Role="Pitsa_Koostisosa" EntitySet="Pitsa_KoostisosaSet" />
-    </AssociationSet>
-    <AssociationSet Name="KlientTellimus" Association="PitsaRestoranModel.Store.KlientTellimus">
-      <End Role="Klient" EntitySet="KlientSet" />
-      <End Role="Tellimus" EntitySet="TellimusSet" />
-    </AssociationSet>
-    <AssociationSet Name="LaudTellimus" Association="PitsaRestoranModel.Store.LaudTellimus">
-      <End Role="Laud" EntitySet="LaudSet" />
-      <End Role="Tellimus" EntitySet="TellimusSet" />
-    </AssociationSet>
-    <AssociationSet Name="TellimusTellimus_Toode" Association="PitsaRestoranModel.Store.TellimusTellimus_Toode">
-      <End Role="Tellimus" EntitySet="TellimusSet" />
-      <End Role="Tellimus_Toode" EntitySet="Tellimus_ToodeSet" />
-    </AssociationSet>
-    <AssociationSet Name="ToodeTellimus_Toode" Association="PitsaRestoranModel.Store.ToodeTellimus_Toode">
-      <End Role="Toode" EntitySet="ToodeSet" />
-      <End Role="Tellimus_Toode" EntitySet="Tellimus_ToodeSet" />
-    </AssociationSet>
-    <AssociationSet Name="Tellimuskohaletoimetamine" Association="PitsaRestoranModel.Store.Tellimuskohaletoimetamine">
-      <End Role="Tellimus" EntitySet="TellimusSet" />
-      <End Role="kohaletoimetamine" EntitySet="kohaletoimetamineSet" />
-    </AssociationSet>
-    <AssociationSet Name="TarnijaTarnija_Koostisosa" Association="PitsaRestoranModel.Store.TarnijaTarnija_Koostisosa">
-      <End Role="Tarnija" EntitySet="TarnijaSet" />
-      <End Role="Tarnija_Koostisosa" EntitySet="Tarnija_KoostisosaSet" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="TootajaSet">
-    <Key>
-      <PropertyRef Name="TootajaID" />
-    </Key>
-    <Property Name="TootajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="isikukood" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="AmetiSet">
-    <Key>
-      <PropertyRef Name="AmetiID" />
-    </Key>
-    <Property Name="AmetiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tootaja_AmetikohtSet">
-    <Key>
-      <PropertyRef Name="Tootaja_AmetikohtID" />
-    </Key>
-    <Property Name="Tootaja_AmetikohtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="AmetiNimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tootaja_TootajaID" Type="int" Nullable="false" />
-    <Property Name="Ameti_AmetiID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="kategooriaSet">
-    <Key>
-      <PropertyRef Name="kategooriaID" />
-    </Key>
-    <Property Name="kategooriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="ToodeSet">
-    <Key>
-      <PropertyRef Name="ToodeID" />
-    </Key>
-    <Property Name="ToodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="hind" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="kategooria_kategooriaID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PitsaSet">
-    <Key>
-      <PropertyRef Name="PitsaID" />
-    </Key>
-    <Property Name="PitsaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Toode_ToodeID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="KoostisosaSet">
-    <Key>
-      <PropertyRef Name="KoostisosaID" />
-    </Key>
-    <Property Name="KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="kehtivusaeg" Type="datetime" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Pitsa_KoostisosaSet">
-    <Key>
-      <PropertyRef Name="Pitsa_KoostisosaID" />
-    </Key>
-    <Property Name="Pitsa_KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Koostisosa_KoostisosaID" Type="int" Nullable="false" />
-    <Property Name="Pitsa_PitsaID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="KlientSet">
-    <Key>
-      <PropertyRef Name="KlientID" />
-    </Key>
-    <Property Name="KlientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TellimusSet">
-    <Key>
-      <PropertyRef Name="TellimusID" />
-    </Key>
-    <Property Name="TellimusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="kuupaev" Type="datetime" Nullable="false" />
-    <Property Name="kellaaeg" Type="time" Nullable="false" />
-    <Property Name="staatus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Klient_KlientID" Type="int" Nullable="false" />
-    <Property Name="Laud_LaudID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="LaudSet">
-    <Key>
-      <PropertyRef Name="LaudID" />
-    </Key>
-    <Property Name="LaudID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="number" Type="int" Nullable="false" />
-    <Property Name="kohtade_arv" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tellimus_ToodeSet">
-    <Key>
-      <PropertyRef Name="Tellimus_ToodeID" />
-    </Key>
-    <Property Name="Tellimus_ToodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tellimus_TellimusID" Type="int" Nullable="false" />
-    <Property Name="Toode_ToodeID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="kohaletoimetamineSet">
-    <Key>
-      <PropertyRef Name="kohaletoimetamineID" />
-    </Key>
-    <Property Name="kohaletoimetamineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="aadress" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="staatus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tellimus_TellimusID" Type="int" Nullable="false" />
-  </EntityType>
-  <EntityType Name="TarnijaSet">
-    <Key>
-      <PropertyRef Name="TarnijaID" />
-    </Key>
-    <Property Name="TarnijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
-  </EntityType>
-  <EntityType Name="Tarnija_KoostisosaSet">
-    <Key>
-      <PropertyRef Name="Tarnija_KoostisosaID" />
-    </Key>
-    <Property Name="Tarnija_KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tarneriik" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="tarnekuupaev" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
-    <Property Name="Tarnija_TarnijaID" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="TootajaTootaja_Ametikoht">
-    <End Role="Tootaja" Type="PitsaRestoranModel.Store.TootajaSet" Multiplicity="1" />
-    <End Role="Tootaja_Ametikoht" Type="PitsaRestoranModel.Store.Tootaja_AmetikohtSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tootaja">
-        <PropertyRef Name="TootajaID" />
-      </Principal>
-      <Dependent Role="Tootaja_Ametikoht">
-        <PropertyRef Name="Tootaja_TootajaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="AmetiTootaja_Ametikoht">
-    <End Role="Ameti" Type="PitsaRestoranModel.Store.AmetiSet" Multiplicity="1" />
-    <End Role="Tootaja_Ametikoht" Type="PitsaRestoranModel.Store.Tootaja_AmetikohtSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Ameti">
-        <PropertyRef Name="AmetiID" />
-      </Principal>
-      <Dependent Role="Tootaja_Ametikoht">
-        <PropertyRef Name="Ameti_AmetiID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="kategooriaToode">
-    <End Role="kategooria" Type="PitsaRestoranModel.Store.kategooriaSet" Multiplicity="1" />
-    <End Role="Toode" Type="PitsaRestoranModel.Store.ToodeSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="kategooria">
-        <PropertyRef Name="kategooriaID" />
-      </Principal>
-      <Dependent Role="Toode">
-        <PropertyRef Name="kategooria_kategooriaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ToodePitsa">
-    <End Role="Toode" Type="PitsaRestoranModel.Store.ToodeSet" Multiplicity="1" />
-    <End Role="Pitsa" Type="PitsaRestoranModel.Store.PitsaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Toode">
-        <PropertyRef Name="ToodeID" />
-      </Principal>
-      <Dependent Role="Pitsa">
-        <PropertyRef Name="Toode_ToodeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="KoostisosaPitsa_Koostisosa">
-    <End Role="Koostisosa" Type="PitsaRestoranModel.Store.KoostisosaSet" Multiplicity="1" />
-    <End Role="Pitsa_Koostisosa" Type="PitsaRestoranModel.Store.Pitsa_KoostisosaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Koostisosa">
-        <PropertyRef Name="KoostisosaID" />
-      </Principal>
-      <Dependent Role="Pitsa_Koostisosa">
-        <PropertyRef Name="Koostisosa_KoostisosaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="PitsaPitsa_Koostisosa">
-    <End Role="Pitsa" Type="PitsaRestoranModel.Store.PitsaSet" Multiplicity="1" />
-    <End Role="Pitsa_Koostisosa" Type="PitsaRestoranModel.Store.Pitsa_KoostisosaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Pitsa">
-        <PropertyRef Name="PitsaID" />
-      </Principal>
-      <Dependent Role="Pitsa_Koostisosa">
-        <PropertyRef Name="Pitsa_PitsaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="KlientTellimus">
-    <End Role="Klient" Type="PitsaRestoranModel.Store.KlientSet" Multiplicity="1" />
-    <End Role="Tellimus" Type="PitsaRestoranModel.Store.TellimusSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Klient">
-        <PropertyRef Name="KlientID" />
-      </Principal>
-      <Dependent Role="Tellimus">
-        <PropertyRef Name="Klient_KlientID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="LaudTellimus">
-    <End Role="Laud" Type="PitsaRestoranModel.Store.LaudSet" Multiplicity="1" />
-    <End Role="Tellimus" Type="PitsaRestoranModel.Store.TellimusSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Laud">
-        <PropertyRef Name="LaudID" />
-      </Principal>
-      <Dependent Role="Tellimus">
-        <PropertyRef Name="Laud_LaudID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="TellimusTellimus_Toode">
-    <End Role="Tellimus" Type="PitsaRestoranModel.Store.TellimusSet" Multiplicity="1" />
-    <End Role="Tellimus_Toode" Type="PitsaRestoranModel.Store.Tellimus_ToodeSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tellimus">
-        <PropertyRef Name="TellimusID" />
-      </Principal>
-      <Dependent Role="Tellimus_Toode">
-        <PropertyRef Name="Tellimus_TellimusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="ToodeTellimus_Toode">
-    <End Role="Toode" Type="PitsaRestoranModel.Store.ToodeSet" Multiplicity="1" />
-    <End Role="Tellimus_Toode" Type="PitsaRestoranModel.Store.Tellimus_ToodeSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Toode">
-        <PropertyRef Name="ToodeID" />
-      </Principal>
-      <Dependent Role="Tellimus_Toode">
-        <PropertyRef Name="Toode_ToodeID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="Tellimuskohaletoimetamine">
-    <End Role="Tellimus" Type="PitsaRestoranModel.Store.TellimusSet" Multiplicity="1" />
-    <End Role="kohaletoimetamine" Type="PitsaRestoranModel.Store.kohaletoimetamineSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tellimus">
-        <PropertyRef Name="TellimusID" />
-      </Principal>
-      <Dependent Role="kohaletoimetamine">
-        <PropertyRef Name="Tellimus_TellimusID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="TarnijaTarnija_Koostisosa">
-    <End Role="Tarnija" Type="PitsaRestoranModel.Store.TarnijaSet" Multiplicity="1" />
-    <End Role="Tarnija_Koostisosa" Type="PitsaRestoranModel.Store.Tarnija_KoostisosaSet" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Tarnija">
-        <PropertyRef Name="TarnijaID" />
-      </Principal>
-      <Dependent Role="Tarnija_Koostisosa">
-        <PropertyRef Name="Tarnija_TarnijaID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="PitsaRestoranModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AmetiSet">
+          <Key>
+            <PropertyRef Name="AmetiID" />
+          </Key>
+          <Property Name="AmetiID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kategooriaSet">
+          <Key>
+            <PropertyRef Name="kategooriaID" />
+          </Key>
+          <Property Name="kategooriaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KlientSet">
+          <Key>
+            <PropertyRef Name="KlientID" />
+          </Key>
+          <Property Name="KlientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="kohaletoimetamineSet">
+          <Key>
+            <PropertyRef Name="kohaletoimetamineID" />
+          </Key>
+          <Property Name="kohaletoimetamineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="aadress" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="staatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tellimus_TellimusID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="KoostisosaSet">
+          <Key>
+            <PropertyRef Name="KoostisosaID" />
+          </Key>
+          <Property Name="KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kehtivusaeg" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LaudSet">
+          <Key>
+            <PropertyRef Name="LaudID" />
+          </Key>
+          <Property Name="LaudID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="number" Type="int" Nullable="false" />
+          <Property Name="kohtade_arv" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pitsa_KoostisosaSet">
+          <Key>
+            <PropertyRef Name="Pitsa_KoostisosaID" />
+          </Key>
+          <Property Name="Pitsa_KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Koostisosa_KoostisosaID" Type="int" Nullable="false" />
+          <Property Name="Pitsa_PitsaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PitsaSet">
+          <Key>
+            <PropertyRef Name="PitsaID" />
+          </Key>
+          <Property Name="PitsaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Toode_ToodeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tarnija_KoostisosaSet">
+          <Key>
+            <PropertyRef Name="Tarnija_KoostisosaID" />
+          </Key>
+          <Property Name="Tarnija_KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tarneriik" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tarnekuupaev" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tarnija_TarnijaID" Type="int" Nullable="false" />
+          <Property Name="Koostisosa_KoostisosaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TarnijaSet">
+          <Key>
+            <PropertyRef Name="TarnijaID" />
+          </Key>
+          <Property Name="TarnijaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="telefon" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tellimus_ToodeSet">
+          <Key>
+            <PropertyRef Name="Tellimus_ToodeID" />
+          </Key>
+          <Property Name="Tellimus_ToodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tellimus_TellimusID" Type="int" Nullable="false" />
+          <Property Name="Toode_ToodeID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TellimusSet">
+          <Key>
+            <PropertyRef Name="TellimusID" />
+          </Key>
+          <Property Name="TellimusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="kuupaev" Type="datetime" Nullable="false" />
+          <Property Name="kellaaeg" Type="time" Precision="7" Nullable="false" />
+          <Property Name="staatus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Klient_KlientID" Type="int" Nullable="false" />
+          <Property Name="Laud_LaudID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ToodeSet">
+          <Key>
+            <PropertyRef Name="ToodeID" />
+          </Key>
+          <Property Name="ToodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kirjeldus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="hind" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="kategooria_kategooriaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tootaja_AmetikohtSet">
+          <Key>
+            <PropertyRef Name="Tootaja_AmetikohtID" />
+          </Key>
+          <Property Name="Tootaja_AmetikohtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AmetiNimetus" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Tootaja_TootajaID" Type="int" Nullable="false" />
+          <Property Name="Ameti_AmetiID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TootajaSet">
+          <Key>
+            <PropertyRef Name="TootajaID" />
+          </Key>
+          <Property Name="TootajaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="eesnimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="perenimi" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="isikukood" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AmetiTootaja_Ametikoht">
+          <End Role="AmetiSet" Type="Self.AmetiSet" Multiplicity="1" />
+          <End Role="Tootaja_AmetikohtSet" Type="Self.Tootaja_AmetikohtSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AmetiSet">
+              <PropertyRef Name="AmetiID" />
+            </Principal>
+            <Dependent Role="Tootaja_AmetikohtSet">
+              <PropertyRef Name="Ameti_AmetiID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_kategooriaToode">
+          <End Role="kategooriaSet" Type="Self.kategooriaSet" Multiplicity="1" />
+          <End Role="ToodeSet" Type="Self.ToodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="kategooriaSet">
+              <PropertyRef Name="kategooriaID" />
+            </Principal>
+            <Dependent Role="ToodeSet">
+              <PropertyRef Name="kategooria_kategooriaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KlientTellimus">
+          <End Role="KlientSet" Type="Self.KlientSet" Multiplicity="1" />
+          <End Role="TellimusSet" Type="Self.TellimusSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KlientSet">
+              <PropertyRef Name="KlientID" />
+            </Principal>
+            <Dependent Role="TellimusSet">
+              <PropertyRef Name="Klient_KlientID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KoostisosaPitsa_Koostisosa">
+          <End Role="KoostisosaSet" Type="Self.KoostisosaSet" Multiplicity="1" />
+          <End Role="Pitsa_KoostisosaSet" Type="Self.Pitsa_KoostisosaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoostisosaSet">
+              <PropertyRef Name="KoostisosaID" />
+            </Principal>
+            <Dependent Role="Pitsa_KoostisosaSet">
+              <PropertyRef Name="Koostisosa_KoostisosaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_KoostisosaTarnija_Koostisosa">
+          <End Role="KoostisosaSet" Type="Self.KoostisosaSet" Multiplicity="1" />
+          <End Role="Tarnija_KoostisosaSet" Type="Self.Tarnija_KoostisosaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KoostisosaSet">
+              <PropertyRef Name="KoostisosaID" />
+            </Principal>
+            <Dependent Role="Tarnija_KoostisosaSet">
+              <PropertyRef Name="Koostisosa_KoostisosaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LaudTellimus">
+          <End Role="LaudSet" Type="Self.LaudSet" Multiplicity="1" />
+          <End Role="TellimusSet" Type="Self.TellimusSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LaudSet">
+              <PropertyRef Name="LaudID" />
+            </Principal>
+            <Dependent Role="TellimusSet">
+              <PropertyRef Name="Laud_LaudID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PitsaPitsa_Koostisosa">
+          <End Role="PitsaSet" Type="Self.PitsaSet" Multiplicity="1" />
+          <End Role="Pitsa_KoostisosaSet" Type="Self.Pitsa_KoostisosaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PitsaSet">
+              <PropertyRef Name="PitsaID" />
+            </Principal>
+            <Dependent Role="Pitsa_KoostisosaSet">
+              <PropertyRef Name="Pitsa_PitsaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TarnijaTarnija_Koostisosa">
+          <End Role="TarnijaSet" Type="Self.TarnijaSet" Multiplicity="1" />
+          <End Role="Tarnija_KoostisosaSet" Type="Self.Tarnija_KoostisosaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TarnijaSet">
+              <PropertyRef Name="TarnijaID" />
+            </Principal>
+            <Dependent Role="Tarnija_KoostisosaSet">
+              <PropertyRef Name="Tarnija_TarnijaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tellimuskohaletoimetamine">
+          <End Role="TellimusSet" Type="Self.TellimusSet" Multiplicity="1" />
+          <End Role="kohaletoimetamineSet" Type="Self.kohaletoimetamineSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TellimusSet">
+              <PropertyRef Name="TellimusID" />
+            </Principal>
+            <Dependent Role="kohaletoimetamineSet">
+              <PropertyRef Name="Tellimus_TellimusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TellimusTellimus_Toode">
+          <End Role="TellimusSet" Type="Self.TellimusSet" Multiplicity="1" />
+          <End Role="Tellimus_ToodeSet" Type="Self.Tellimus_ToodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TellimusSet">
+              <PropertyRef Name="TellimusID" />
+            </Principal>
+            <Dependent Role="Tellimus_ToodeSet">
+              <PropertyRef Name="Tellimus_TellimusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToodePitsa">
+          <End Role="ToodeSet" Type="Self.ToodeSet" Multiplicity="1" />
+          <End Role="PitsaSet" Type="Self.PitsaSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToodeSet">
+              <PropertyRef Name="ToodeID" />
+            </Principal>
+            <Dependent Role="PitsaSet">
+              <PropertyRef Name="Toode_ToodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ToodeTellimus_Toode">
+          <End Role="ToodeSet" Type="Self.ToodeSet" Multiplicity="1" />
+          <End Role="Tellimus_ToodeSet" Type="Self.Tellimus_ToodeSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ToodeSet">
+              <PropertyRef Name="ToodeID" />
+            </Principal>
+            <Dependent Role="Tellimus_ToodeSet">
+              <PropertyRef Name="Toode_ToodeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TootajaTootaja_Ametikoht">
+          <End Role="TootajaSet" Type="Self.TootajaSet" Multiplicity="1" />
+          <End Role="Tootaja_AmetikohtSet" Type="Self.Tootaja_AmetikohtSet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TootajaSet">
+              <PropertyRef Name="TootajaID" />
+            </Principal>
+            <Dependent Role="Tootaja_AmetikohtSet">
+              <PropertyRef Name="Tootaja_TootajaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PitsaRestoranModelStoreContainer">
+          <EntitySet Name="AmetiSet" EntityType="Self.AmetiSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kategooriaSet" EntityType="Self.kategooriaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KlientSet" EntityType="Self.KlientSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="kohaletoimetamineSet" EntityType="Self.kohaletoimetamineSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="KoostisosaSet" EntityType="Self.KoostisosaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LaudSet" EntityType="Self.LaudSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pitsa_KoostisosaSet" EntityType="Self.Pitsa_KoostisosaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PitsaSet" EntityType="Self.PitsaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tarnija_KoostisosaSet" EntityType="Self.Tarnija_KoostisosaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TarnijaSet" EntityType="Self.TarnijaSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tellimus_ToodeSet" EntityType="Self.Tellimus_ToodeSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TellimusSet" EntityType="Self.TellimusSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ToodeSet" EntityType="Self.ToodeSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tootaja_AmetikohtSet" EntityType="Self.Tootaja_AmetikohtSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TootajaSet" EntityType="Self.TootajaSet" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AmetiTootaja_Ametikoht" Association="Self.FK_AmetiTootaja_Ametikoht">
+            <End Role="AmetiSet" EntitySet="AmetiSet" />
+            <End Role="Tootaja_AmetikohtSet" EntitySet="Tootaja_AmetikohtSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_kategooriaToode" Association="Self.FK_kategooriaToode">
+            <End Role="kategooriaSet" EntitySet="kategooriaSet" />
+            <End Role="ToodeSet" EntitySet="ToodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KlientTellimus" Association="Self.FK_KlientTellimus">
+            <End Role="KlientSet" EntitySet="KlientSet" />
+            <End Role="TellimusSet" EntitySet="TellimusSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KoostisosaPitsa_Koostisosa" Association="Self.FK_KoostisosaPitsa_Koostisosa">
+            <End Role="KoostisosaSet" EntitySet="KoostisosaSet" />
+            <End Role="Pitsa_KoostisosaSet" EntitySet="Pitsa_KoostisosaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_KoostisosaTarnija_Koostisosa" Association="Self.FK_KoostisosaTarnija_Koostisosa">
+            <End Role="KoostisosaSet" EntitySet="KoostisosaSet" />
+            <End Role="Tarnija_KoostisosaSet" EntitySet="Tarnija_KoostisosaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LaudTellimus" Association="Self.FK_LaudTellimus">
+            <End Role="LaudSet" EntitySet="LaudSet" />
+            <End Role="TellimusSet" EntitySet="TellimusSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PitsaPitsa_Koostisosa" Association="Self.FK_PitsaPitsa_Koostisosa">
+            <End Role="PitsaSet" EntitySet="PitsaSet" />
+            <End Role="Pitsa_KoostisosaSet" EntitySet="Pitsa_KoostisosaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TarnijaTarnija_Koostisosa" Association="Self.FK_TarnijaTarnija_Koostisosa">
+            <End Role="TarnijaSet" EntitySet="TarnijaSet" />
+            <End Role="Tarnija_KoostisosaSet" EntitySet="Tarnija_KoostisosaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tellimuskohaletoimetamine" Association="Self.FK_Tellimuskohaletoimetamine">
+            <End Role="TellimusSet" EntitySet="TellimusSet" />
+            <End Role="kohaletoimetamineSet" EntitySet="kohaletoimetamineSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TellimusTellimus_Toode" Association="Self.FK_TellimusTellimus_Toode">
+            <End Role="TellimusSet" EntitySet="TellimusSet" />
+            <End Role="Tellimus_ToodeSet" EntitySet="Tellimus_ToodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToodePitsa" Association="Self.FK_ToodePitsa">
+            <End Role="ToodeSet" EntitySet="ToodeSet" />
+            <End Role="PitsaSet" EntitySet="PitsaSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ToodeTellimus_Toode" Association="Self.FK_ToodeTellimus_Toode">
+            <End Role="ToodeSet" EntitySet="ToodeSet" />
+            <End Role="Tellimus_ToodeSet" EntitySet="Tellimus_ToodeSet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TootajaTootaja_Ametikoht" Association="Self.FK_TootajaTootaja_Ametikoht">
+            <End Role="TootajaSet" EntitySet="TootajaSet" />
+            <End Role="Tootaja_AmetikohtSet" EntitySet="Tootaja_AmetikohtSet" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="PitsaRestoranModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
@@ -414,32 +431,36 @@
             <End Role="Tarnija" EntitySet="TarnijaSet" />
             <End Role="Tarnija_Koostisosa" EntitySet="Tarnija_KoostisosaSet" />
           </AssociationSet>
+          <AssociationSet Name="KoostisosaTarnija_Koostisosa" Association="PitsaRestoranModel.KoostisosaTarnija_Koostisosa">
+            <End Role="Koostisosa" EntitySet="KoostisosaSet" />
+            <End Role="Tarnija_Koostisosa" EntitySet="Tarnija_KoostisosaSet" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Tootaja">
           <Key>
             <PropertyRef Name="TootajaID" />
           </Key>
           <Property Name="TootajaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="eesnimi" Type="String" Nullable="false" />
+          <Property Name="eesnimi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tootaja_Ametikoht" Relationship="PitsaRestoranModel.TootajaTootaja_Ametikoht" FromRole="Tootaja" ToRole="Tootaja_Ametikoht" />
-          <Property Name="perenimi" Type="String" Nullable="false" />
-          <Property Name="isikukood" Type="String" Nullable="false" />
+          <Property Name="perenimi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="isikukood" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Ameti">
           <Key>
             <PropertyRef Name="AmetiID" />
           </Key>
           <Property Name="AmetiID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tootaja_Ametikoht" Relationship="PitsaRestoranModel.AmetiTootaja_Ametikoht" FromRole="Ameti" ToRole="Tootaja_Ametikoht" />
-          <Property Name="kirjeldus" Type="String" Nullable="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Tootaja_Ametikoht">
           <Key>
             <PropertyRef Name="Tootaja_AmetikohtID" />
           </Key>
           <Property Name="Tootaja_AmetikohtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="AmetiNimetus" Type="String" Nullable="false" />
+          <Property Name="AmetiNimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tootaja" Relationship="PitsaRestoranModel.TootajaTootaja_Ametikoht" FromRole="Tootaja_Ametikoht" ToRole="Tootaja" />
           <NavigationProperty Name="Ameti" Relationship="PitsaRestoranModel.AmetiTootaja_Ametikoht" FromRole="Tootaja_Ametikoht" ToRole="Ameti" />
         </EntityType>
@@ -456,7 +477,7 @@
             <PropertyRef Name="kategooriaID" />
           </Key>
           <Property Name="kategooriaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.kategooriaToode" FromRole="kategooria" ToRole="Toode" />
         </EntityType>
         <EntityType Name="Toode">
@@ -464,9 +485,9 @@
             <PropertyRef Name="ToodeID" />
           </Key>
           <Property Name="ToodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
-          <Property Name="kirjeldus" Type="String" Nullable="false" />
-          <Property Name="hind" Type="String" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="kirjeldus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="hind" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="kategooria" Relationship="PitsaRestoranModel.kategooriaToode" FromRole="Toode" ToRole="kategooria" />
           <NavigationProperty Name="Pitsa" Relationship="PitsaRestoranModel.ToodePitsa" FromRole="Toode" ToRole="Pitsa" />
           <NavigationProperty Name="Tellimus_Toode" Relationship="PitsaRestoranModel.ToodeTellimus_Toode" FromRole="Toode" ToRole="Tellimus_Toode" />
@@ -480,7 +501,7 @@
             <PropertyRef Name="PitsaID" />
           </Key>
           <Property Name="PitsaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.ToodePitsa" FromRole="Pitsa" ToRole="Toode" />
           <NavigationProperty Name="Pitsa_Koostisosa" Relationship="PitsaRestoranModel.PitsaPitsa_Koostisosa" FromRole="Pitsa" ToRole="Pitsa_Koostisosa" />
         </EntityType>
@@ -493,16 +514,17 @@
             <PropertyRef Name="KoostisosaID" />
           </Key>
           <Property Name="KoostisosaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
-          <Property Name="kehtivusaeg" Type="DateTime" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="kehtivusaeg" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="Pitsa_Koostisosa" Relationship="PitsaRestoranModel.KoostisosaPitsa_Koostisosa" FromRole="Koostisosa" ToRole="Pitsa_Koostisosa" />
+          <NavigationProperty Name="Tarnija_Koostisosa" Relationship="PitsaRestoranModel.KoostisosaTarnija_Koostisosa" FromRole="Koostisosa" ToRole="Tarnija_Koostisosa" />
         </EntityType>
         <EntityType Name="Pitsa_Koostisosa">
           <Key>
             <PropertyRef Name="Pitsa_KoostisosaID" />
           </Key>
           <Property Name="Pitsa_KoostisosaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kogus" Type="String" Nullable="false" />
+          <Property Name="kogus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Koostisosa" Relationship="PitsaRestoranModel.KoostisosaPitsa_Koostisosa" FromRole="Pitsa_Koostisosa" ToRole="Koostisosa" />
           <NavigationProperty Name="Pitsa" Relationship="PitsaRestoranModel.PitsaPitsa_Koostisosa" FromRole="Pitsa_Koostisosa" ToRole="Pitsa" />
         </EntityType>
@@ -519,9 +541,9 @@
             <PropertyRef Name="KlientID" />
           </Key>
           <Property Name="KlientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="eesnimi" Type="String" Nullable="false" />
-          <Property Name="perenimi" Type="String" Nullable="false" />
-          <Property Name="telefon" Type="String" Nullable="false" />
+          <Property Name="eesnimi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="perenimi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="telefon" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tellimus" Relationship="PitsaRestoranModel.KlientTellimus" FromRole="Klient" ToRole="Tellimus" />
         </EntityType>
         <EntityType Name="Tellimus">
@@ -529,9 +551,9 @@
             <PropertyRef Name="TellimusID" />
           </Key>
           <Property Name="TellimusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kuupaev" Type="DateTime" Nullable="false" />
-          <Property Name="kellaaeg" Type="Time" Nullable="false" />
-          <Property Name="staatus" Type="String" Nullable="false" />
+          <Property Name="kuupaev" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="kellaaeg" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="staatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Klient" Relationship="PitsaRestoranModel.KlientTellimus" FromRole="Tellimus" ToRole="Klient" />
           <NavigationProperty Name="Laud" Relationship="PitsaRestoranModel.LaudTellimus" FromRole="Tellimus" ToRole="Laud" />
           <NavigationProperty Name="Tellimus_Toode" Relationship="PitsaRestoranModel.TellimusTellimus_Toode" FromRole="Tellimus" ToRole="Tellimus_Toode" />
@@ -547,7 +569,7 @@
           </Key>
           <Property Name="LaudID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="number" Type="Int32" Nullable="false" />
-          <Property Name="kohtade_arv" Type="String" Nullable="false" />
+          <Property Name="kohtade_arv" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tellimus" Relationship="PitsaRestoranModel.LaudTellimus" FromRole="Laud" ToRole="Tellimus" />
         </EntityType>
         <Association Name="LaudTellimus">
@@ -559,7 +581,7 @@
             <PropertyRef Name="Tellimus_ToodeID" />
           </Key>
           <Property Name="Tellimus_ToodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="kogus" Type="String" Nullable="false" />
+          <Property Name="kogus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tellimus" Relationship="PitsaRestoranModel.TellimusTellimus_Toode" FromRole="Tellimus_Toode" ToRole="Tellimus" />
           <NavigationProperty Name="Toode" Relationship="PitsaRestoranModel.ToodeTellimus_Toode" FromRole="Tellimus_Toode" ToRole="Toode" />
         </EntityType>
@@ -576,8 +598,8 @@
             <PropertyRef Name="kohaletoimetamineID" />
           </Key>
           <Property Name="kohaletoimetamineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="aadress" Type="String" Nullable="false" />
-          <Property Name="staatus" Type="String" Nullable="false" />
+          <Property Name="aadress" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="staatus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tellimus" Relationship="PitsaRestoranModel.Tellimuskohaletoimetamine" FromRole="kohaletoimetamine" ToRole="Tellimus" />
         </EntityType>
         <Association Name="Tellimuskohaletoimetamine">
@@ -589,8 +611,8 @@
             <PropertyRef Name="TarnijaID" />
           </Key>
           <Property Name="TarnijaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="nimetus" Type="String" Nullable="false" />
-          <Property Name="telefon" Type="String" Nullable="false" />
+          <Property Name="nimetus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="telefon" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tarnija_Koostisosa" Relationship="PitsaRestoranModel.TarnijaTarnija_Koostisosa" FromRole="Tarnija" ToRole="Tarnija_Koostisosa" />
         </EntityType>
         <EntityType Name="Tarnija_Koostisosa">
@@ -598,13 +620,18 @@
             <PropertyRef Name="Tarnija_KoostisosaID" />
           </Key>
           <Property Name="Tarnija_KoostisosaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="tarneriik" Type="String" Nullable="false" />
-          <Property Name="tarnekuupaev" Type="String" Nullable="false" />
-          <Property Name="kogus" Type="String" Nullable="false" />
+          <Property Name="tarneriik" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="tarnekuupaev" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="kogus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tarnija" Relationship="PitsaRestoranModel.TarnijaTarnija_Koostisosa" FromRole="Tarnija_Koostisosa" ToRole="Tarnija" />
+          <NavigationProperty Name="Koostisosa" Relationship="PitsaRestoranModel.KoostisosaTarnija_Koostisosa" FromRole="Tarnija_Koostisosa" ToRole="Koostisosa" />
         </EntityType>
         <Association Name="TarnijaTarnija_Koostisosa">
           <End Type="PitsaRestoranModel.Tarnija" Role="Tarnija" Multiplicity="1" />
+          <End Type="PitsaRestoranModel.Tarnija_Koostisosa" Role="Tarnija_Koostisosa" Multiplicity="*" />
+        </Association>
+        <Association Name="KoostisosaTarnija_Koostisosa">
+          <End Type="PitsaRestoranModel.Koostisosa" Role="Koostisosa" Multiplicity="1" />
           <End Type="PitsaRestoranModel.Tarnija_Koostisosa" Role="Tarnija_Koostisosa" Multiplicity="*" />
         </Association>
       </Schema>
@@ -844,6 +871,14 @@
         <ScalarProperty Name="Tarnija_KoostisosaID" ColumnName="Tarnija_KoostisosaID" />
       </EndProperty>
     </AssociationSetMapping>
+    <AssociationSetMapping Name="KoostisosaTarnija_Koostisosa" TypeName="PitsaRestoranModel.KoostisosaTarnija_Koostisosa" StoreEntitySet="Tarnija_KoostisosaSet">
+      <EndProperty Name="Koostisosa">
+        <ScalarProperty Name="KoostisosaID" ColumnName="Koostisosa_KoostisosaID" />
+      </EndProperty>
+      <EndProperty Name="Tarnija_Koostisosa">
+        <ScalarProperty Name="Tarnija_KoostisosaID" ColumnName="Tarnija_KoostisosaID" />
+      </EndProperty>
+    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
@@ -860,6 +895,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
         <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->

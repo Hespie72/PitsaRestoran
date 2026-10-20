@@ -103,6 +103,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="About2.aspx" />
+    <Content Include="About4.aspx" />
+    <Content Include="About3.aspx" />
+    <Content Include="About1.aspx" />
     <Content Include="About.aspx" />
     <Content Include="Contact3.aspx" />
     <Content Include="Contact2.aspx" />
@@ -207,6 +211,34 @@
     <Content Include="Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="About2.aspx.cs">
+      <DependentUpon>About2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About2.aspx.designer.cs">
+      <DependentUpon>About2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About4.aspx.cs">
+      <DependentUpon>About4.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About4.aspx.designer.cs">
+      <DependentUpon>About4.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About3.aspx.cs">
+      <DependentUpon>About3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About3.aspx.designer.cs">
+      <DependentUpon>About3.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About1.aspx.cs">
+      <DependentUpon>About1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About1.aspx.designer.cs">
+      <DependentUpon>About1.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Ameti.cs">
       <DependentUpon>PitsaRestoranModel.tt</DependentUpon>
     </Compile>

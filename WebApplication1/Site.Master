@@ -51,6 +51,10 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Ameti</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact2">AmetiTöötajat</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact3">Lisa AmetiTöötajat</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About1">Tarnija</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About2">Koostisosa</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About3">Tarnija Kostisosa</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About4">Tarnija Kostisosa Lisa</a></li>
                     </ul>
                 </div>
             </div>
