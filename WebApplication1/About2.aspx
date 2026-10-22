@@ -10,7 +10,14 @@
             <asp:CommandField DeleteText="Kustuta" EditText="Muuda" ShowDeleteButton="True" ShowEditButton="True" CancelText="Tühista" UpdateText="Uuenda" />
             <asp:BoundField DataField="KoostisosaID" HeaderText="KoostisosaID" ReadOnly="True" SortExpression="KoostisosaID" />
             <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
-            <asp:BoundField DataField="kehtivusaeg" HeaderText="kehtivusaeg" SortExpression="kehtivusaeg" />
+            <asp:TemplateField HeaderText="kehtivusaeg" SortExpression="kehtivusaeg">
+                <EditItemTemplate>
+                    <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("kehtivusaeg") %>'></asp:TextBox>
+                </EditItemTemplate>
+                <ItemTemplate>
+                    <asp:Label ID="Label1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("kehtivusaeg") %>'></asp:Label>
+                </ItemTemplate>
+            </asp:TemplateField>
         </Columns>
         <EditRowStyle BackColor="#2461BF" />
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
@@ -48,7 +55,17 @@
             <Fields>
                 <asp:BoundField DataField="KoostisosaID" HeaderText="KoostisosaID" InsertVisible="False" ReadOnly="True" SortExpression="KoostisosaID" />
                 <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
-                <asp:BoundField DataField="kehtivusaeg" HeaderText="kehtivusaeg" SortExpression="kehtivusaeg" />
+                <asp:TemplateField HeaderText="kehtivusaeg" SortExpression="kehtivusaeg">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("kehtivusaeg") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("kehtivusaeg") %>'></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("kehtivusaeg") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:CommandField NewText="Lisa" ShowInsertButton="True" CancelText="Tühista" InsertText="Lisa" />
             </Fields>
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
