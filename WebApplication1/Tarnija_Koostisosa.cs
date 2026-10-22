@@ -16,7 +16,7 @@ namespace WebApplication1
     {
         public int Tarnija_KoostisosaID { get; set; }
         public string tarneriik { get; set; }
-        public string tarnekuupaev { get; set; }
+        public System.DateTime tarnekuupaev { get; set; }
         public string kogus { get; set; }
     
         public virtual Tarnija Tarnija { get; set; }

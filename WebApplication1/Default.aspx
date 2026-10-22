@@ -4,8 +4,8 @@
 
     <main>
         <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p>Tere tulemast, see leht on ühendatud andmebassiga</p>
+            <h1 id="aspnetTitle">Tere tulemast, see leht on ühendatud andmebassiga</h1>
+            <p>&nbsp;</p>
         </section>
     </main>
 

@@ -104,6 +104,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About2.aspx" />
+    <Content Include="About5.aspx" />
     <Content Include="About4.aspx" />
     <Content Include="About3.aspx" />
     <Content Include="About1.aspx" />
@@ -217,6 +218,13 @@
     </Compile>
     <Compile Include="About2.aspx.designer.cs">
       <DependentUpon>About2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="About5.aspx.cs">
+      <DependentUpon>About5.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About5.aspx.designer.cs">
+      <DependentUpon>About5.aspx</DependentUpon>
     </Compile>
     <Compile Include="About4.aspx.cs">
       <DependentUpon>About4.aspx</DependentUpon>

@@ -4,7 +4,7 @@
     <main aria-labelledby="title">
         <h2 id="title">Lisa Tarnija Koostisosades</h2>
     <p>
-        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="Tarnija_KoostisosaID" DataSourceID="SqlDataSource1_TarnijaKoostisosa" Height="50px" Width="256px" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:DetailsView ID="DetailsView1" runat="server" AutoGenerateRows="False" DataKeyNames="Tarnija_KoostisosaID" DataSourceID="SqlDataSource1_TarnijaKoostisosa" Height="50px" Width="125px" CellPadding="4" DefaultMode="Insert" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" />
             <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
             <EditRowStyle BackColor="#2461BF" />
@@ -12,16 +12,26 @@
             <Fields>
                 <asp:BoundField DataField="Tarnija_KoostisosaID" HeaderText="Tarnija_KoostisosaID" InsertVisible="False" ReadOnly="True" SortExpression="Tarnija_KoostisosaID" />
                 <asp:BoundField DataField="tarneriik" HeaderText="tarneriik" SortExpression="tarneriik" />
-                <asp:BoundField DataField="tarnekuupaev" HeaderText="tarnekuupaev" SortExpression="tarnekuupaev" />
+                <asp:TemplateField HeaderText="tarnekuupaev" SortExpression="tarnekuupaev">
+                    <EditItemTemplate>
+                        <asp:TextBox ID="TextBox3" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("tarnekuupaev") %>'></asp:TextBox>
+                    </EditItemTemplate>
+                    <InsertItemTemplate>
+                        <asp:TextBox ID="TextBox1" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("tarnekuupaev") %>'></asp:TextBox>
+                    </InsertItemTemplate>
+                    <ItemTemplate>
+                        <asp:Label ID="Label3" runat="server" CssClass="form-control" TextMode="Date" Text='<%# Bind("tarnekuupaev") %>'></asp:Label>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:BoundField DataField="kogus" HeaderText="kogus" SortExpression="kogus" />
                 <asp:TemplateField HeaderText="Tarnija_TarnijaID" SortExpression="Tarnija_TarnijaID">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox1" runat="server" Text='<%# Bind("Tarnija_TarnijaID") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1_tarnija" DataTextField="nimetus" DataValueField="TarnijaID" SelectedValue='<%# Bind("Tarnija_TarnijaID") %>'>
+                        <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource1_Tarnija" DataTextField="nimetus" DataValueField="TarnijaID" SelectedValue='<%# Bind("Tarnija_TarnijaID") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1_tarnija" runat="server" ConnectionString="<%$ ConnectionStrings:PitsarestoranConnectionString2 %>" DeleteCommand="DELETE FROM [TarnijaSet] WHERE [TarnijaID] = @TarnijaID" InsertCommand="INSERT INTO [TarnijaSet] ([nimetus], [telefon]) VALUES (@nimetus, @telefon)" SelectCommand="SELECT * FROM [TarnijaSet]" UpdateCommand="UPDATE [TarnijaSet] SET [nimetus] = @nimetus, [telefon] = @telefon WHERE [TarnijaID] = @TarnijaID">
+                        <asp:SqlDataSource ID="SqlDataSource1_Tarnija" runat="server" ConnectionString="<%$ ConnectionStrings:PitsarestoranConnectionString2 %>" DeleteCommand="DELETE FROM [TarnijaSet] WHERE [TarnijaID] = @TarnijaID" InsertCommand="INSERT INTO [TarnijaSet] ([nimetus], [telefon]) VALUES (@nimetus, @telefon)" SelectCommand="SELECT * FROM [TarnijaSet]" UpdateCommand="UPDATE [TarnijaSet] SET [nimetus] = @nimetus, [telefon] = @telefon WHERE [TarnijaID] = @TarnijaID">
                             <DeleteParameters>
                                 <asp:Parameter Name="TarnijaID" Type="Int32" />
                             </DeleteParameters>
@@ -45,9 +55,9 @@
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("Koostisosa_KoostisosaID") %>'></asp:TextBox>
                     </EditItemTemplate>
                     <InsertItemTemplate>
-                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1_Koostisosa" DataTextField="nimetus" DataValueField="KoostisosaID" SelectedValue='<%# Bind("Koostisosa_KoostisosaID") %>'>
+                        <asp:DropDownList ID="DropDownList2" runat="server" DataSourceID="SqlDataSource1_koostisosa" DataTextField="nimetus" DataValueField="KoostisosaID" SelectedValue='<%# Bind("Koostisosa_KoostisosaID") %>'>
                         </asp:DropDownList>
-                        <asp:SqlDataSource ID="SqlDataSource1_Koostisosa" runat="server" ConnectionString="<%$ ConnectionStrings:PitsarestoranConnectionString2 %>" DeleteCommand="DELETE FROM [KoostisosaSet] WHERE [KoostisosaID] = @KoostisosaID" InsertCommand="INSERT INTO [KoostisosaSet] ([nimetus], [kehtivusaeg]) VALUES (@nimetus, @kehtivusaeg)" SelectCommand="SELECT * FROM [KoostisosaSet]" UpdateCommand="UPDATE [KoostisosaSet] SET [nimetus] = @nimetus, [kehtivusaeg] = @kehtivusaeg WHERE [KoostisosaID] = @KoostisosaID">
+                        <asp:SqlDataSource ID="SqlDataSource1_koostisosa" runat="server" ConnectionString="<%$ ConnectionStrings:PitsarestoranConnectionString2 %>" DeleteCommand="DELETE FROM [KoostisosaSet] WHERE [KoostisosaID] = @KoostisosaID" InsertCommand="INSERT INTO [KoostisosaSet] ([nimetus], [kehtivusaeg]) VALUES (@nimetus, @kehtivusaeg)" SelectCommand="SELECT * FROM [KoostisosaSet]" UpdateCommand="UPDATE [KoostisosaSet] SET [nimetus] = @nimetus, [kehtivusaeg] = @kehtivusaeg WHERE [KoostisosaID] = @KoostisosaID">
                             <DeleteParameters>
                                 <asp:Parameter Name="KoostisosaID" Type="Int32" />
                             </DeleteParameters>
@@ -66,7 +76,7 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("Koostisosa_KoostisosaID") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowInsertButton="True" NewText="Lisa" />
+                <asp:CommandField CancelText="Tühista" NewText="Lisa" ShowInsertButton="True" InsertText="Lisa" />
             </Fields>
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

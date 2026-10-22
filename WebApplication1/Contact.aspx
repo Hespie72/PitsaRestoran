@@ -7,7 +7,7 @@
     <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" CellPadding="4" DataKeyNames="AmetiID" DataSourceID="SqlDataSource1" EmptyDataText="There are no data records to display." ForeColor="#333333" GridLines="None">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
-            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteText="Kustuta" EditText="Muuda" />
+            <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" DeleteText="Kustuta" EditText="Muuda" CancelText="Tühista" UpdateText="Uuenda" />
             <asp:BoundField DataField="AmetiID" HeaderText="AmetiID" ReadOnly="True" SortExpression="AmetiID" />
             <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
             <asp:BoundField DataField="kirjeldus" HeaderText="kirjeldus" SortExpression="kirjeldus" />
@@ -48,7 +48,7 @@
             <asp:BoundField DataField="AmetiID" HeaderText="AmetiID" InsertVisible="False" ReadOnly="True" SortExpression="AmetiID" />
             <asp:BoundField DataField="nimetus" HeaderText="nimetus" SortExpression="nimetus" />
             <asp:BoundField DataField="kirjeldus" HeaderText="kirjeldus" SortExpression="kirjeldus" />
-            <asp:CommandField ShowInsertButton="True" NewText="Lisa" />
+            <asp:CommandField ShowInsertButton="True" NewText="Lisa" CancelText="Tühista" InsertText="Lisa" />
         </Fields>
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />

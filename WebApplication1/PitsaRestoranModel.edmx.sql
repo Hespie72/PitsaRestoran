@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/20/2026 09:11:22
+-- Date Created: 10/22/2026 10:59:30
 -- Generated from EDMX file: C:\Users\opilane\source\repos\PitsaRestoran\WebApplication1\PitsaRestoranModel.edmx
 -- --------------------------------------------------
 
@@ -28,6 +28,9 @@ IF OBJECT_ID(N'[dbo].[FK_KlientTellimus]', 'F') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[FK_KoostisosaPitsa_Koostisosa]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[Pitsa_KoostisosaSet] DROP CONSTRAINT [FK_KoostisosaPitsa_Koostisosa];
+GO
+IF OBJECT_ID(N'[dbo].[FK_KoostisosaTarnija_Koostisosa]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Tarnija_KoostisosaSet] DROP CONSTRAINT [FK_KoostisosaTarnija_Koostisosa];
 GO
 IF OBJECT_ID(N'[dbo].[FK_LaudTellimus]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TellimusSet] DROP CONSTRAINT [FK_LaudTellimus];
@@ -234,7 +237,7 @@ GO
 CREATE TABLE [dbo].[Tarnija_KoostisosaSet] (
     [Tarnija_KoostisosaID] int IDENTITY(1,1) NOT NULL,
     [tarneriik] nvarchar(max)  NOT NULL,
-    [tarnekuupaev] nvarchar(max)  NOT NULL,
+    [tarnekuupaev] datetime  NOT NULL,
     [kogus] nvarchar(max)  NOT NULL,
     [Tarnija_TarnijaID] int  NOT NULL,
     [Koostisosa_KoostisosaID] int  NOT NULL

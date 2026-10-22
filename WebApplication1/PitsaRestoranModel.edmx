@@ -77,7 +77,7 @@
           </Key>
           <Property Name="Tarnija_KoostisosaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="tarneriik" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="tarnekuupaev" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="tarnekuupaev" Type="datetime" Nullable="false" />
           <Property Name="kogus" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Tarnija_TarnijaID" Type="int" Nullable="false" />
           <Property Name="Koostisosa_KoostisosaID" Type="int" Nullable="false" />
@@ -621,7 +621,7 @@
           </Key>
           <Property Name="Tarnija_KoostisosaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="tarneriik" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="tarnekuupaev" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="tarnekuupaev" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="kogus" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="Tarnija" Relationship="PitsaRestoranModel.TarnijaTarnija_Koostisosa" FromRole="Tarnija_Koostisosa" ToRole="Tarnija" />
           <NavigationProperty Name="Koostisosa" Relationship="PitsaRestoranModel.KoostisosaTarnija_Koostisosa" FromRole="Tarnija_Koostisosa" ToRole="Koostisosa" />

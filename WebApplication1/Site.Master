@@ -55,6 +55,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About2">Koostisosa</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About3">Tarnija Kostisosa</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About4">Tarnija Kostisosa Lisa</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About5">Tarnija Kostisosa Koos</a></li>
                     </ul>
                 </div>
             </div>

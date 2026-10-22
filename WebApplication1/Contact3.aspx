@@ -66,7 +66,7 @@
                         <asp:Label ID="Label2" runat="server" Text='<%# Bind("Ameti_AmetiID") %>'></asp:Label>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:CommandField ShowInsertButton="True" NewText="Lisa" />
+                <asp:CommandField ShowInsertButton="True" NewText="Lisa" CancelText="Tühista" InsertText="Lisa" />
             </Fields>
             <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
             <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
